@@ -31,7 +31,7 @@ if [ "$WGUI_MANAGE_RESTART" = "true" ]; then
         echo "[init] Config change detected. Restarting $INTERFACE..."
         wg-quick down "$CONF"
         wg-quick up "$CONF"
-        chown wgui:wgui "CONF"
+        chown wgui:wgui "$CONF"
     done &
 fi
 
