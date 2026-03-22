@@ -37,7 +37,10 @@ ENV WGUI_MANAGE_START=true \
 #EXPOSE 51823/udp 5000/tcp
 
 RUN mkdir -p /app/db && \
-	chown -R wgui:wgui /app
+	chown -R wgui:wgui /app && \
+	mkdir -p /etc/wireguard && \
+	touch /etc/wireguard/wg0.conf && \
+	chown wgui:wgui /etc/wireguard/wg0.conf
 
 # Container starts as root to manage kernel/iptables, then drops privs for UI
 ENTRYPOINT ["/usr/bin/catatonit", "--", "/init.sh"]
