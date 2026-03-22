@@ -5,8 +5,8 @@ CONF="/etc/wireguard/wg0.conf"
 DB_DIR="/app"
 
 # Ensure the wgui user owns the config directory so it can write the DB and wg0.conf
-# mkdir -p "$DB_DIR/db"
-# chown -R wgui:wgui "$DB_DIR"
+mkdir -p "$DB_DIR/db"
+chown -R wgui:wgui "$DB_DIR"
 
 if [ -f "$DB_DIR/db/server/global_settings.json" ]; then
     JSON_CONF=$(jq -r .config_file_path "$DB_DIR/db/server/global_settings.json" 2>/dev/null)
